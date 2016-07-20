@@ -1,0 +1,46 @@
+\documentclass{minvoice}
+
+\invoicedate{1970}{01}{01}
+\renewcommand{\invoice}{0001.001}
+
+\renewcommand{\me}{Joanne~Bloggs}
+\renewcommand{\myaddress}{
+  Buckingham Palace, \\
+  London SW1 1AA
+}
+\renewcommand{\myphone}{+12 3456 789012}
+\renewcommand{\myemail}{you@example.com}
+\renewcommand{\myswift}{SWIFTNO}
+\renewcommand{\myiban}{VERYLONGIBANNUMBER}
+
+\renewcommand{\clientcontact}{Customer~Contact}
+\renewcommand{\clientname}{Big Business Limited}
+\renewcommand{\clientaddress}{
+  Fancy Building, \\
+  Somewhere Nice, \\
+  London, \\
+  SW1 1AA
+}
+
+\renewcommand{\deadline}{15}    % days
+
+\begin{document}
+
+\begin{work}
+
+  \lineitem{1970-01-05}{123.45}{
+  \item Stuff you did
+  }
+  \lineitem{1970-01-12}{123.45}{
+  \item Stuff you did
+  }
+  \lineitem{1970-01-19}{123.45}{
+  \item Stuff you did
+  }
+  \lineitem{1970-01-26}{123.45}{
+  \item Stuff you did
+  }
+
+\end{work}
+
+\end{document}
