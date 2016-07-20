@@ -13,14 +13,16 @@
 # OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
 # PERFORMANCE OF THIS SOFTWARE.
 
-LATEX = xelatex
-
-PDFS = $(patsubst %.tex, %.pdf, $(wildcard *.tex))
+PDFS = $(patsubst %.tex, %.pdf, $(wildcard 2*.tex))
 all: $(PDFS)
 
-%.pdf: %.tex
+%.pdf: %.tex minvoice.cls
 	latexmk -pdf -xelatex $*
 
 clean:
+	latexmk -c
+	$(RM) *.fls
+
+distclean:
 	latexmk -C
 	$(RM) $(PDFS)
