@@ -21,7 +21,7 @@ all: $(PDFS)
 
 clean:
 	latexmk -c
-	$(RM) *.fls
+	$(RM) *.fls *.xdv
 
 distclean:
 	latexmk -C

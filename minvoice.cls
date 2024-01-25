@@ -48,24 +48,26 @@
 
 %% Formatting numbers
 \RequirePackage{siunitx}
-\sisetup{round-integer-to-decimal, group-separator={,}}
+\sisetup{mode=text, round-integer-to-decimal, group-separator={,}}
 
 %% Fonts
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{eurosym}
+\usepackage{upquote}
+\usepackage{microtype}
+\usepackage{xltxtra,xunicode}
+\defaultfontfeatures{Mapping=tex-text,Scale=MatchUppercase}
+\renewcommand{\familydefault}{\rmdefault}
+
 \RequirePackage{fontspec}
 \defaultfontfeatures{
   Ligatures = TeX,
   Path      = ./fonts/
 }
+\setmainfont{OpenSans-Regular}
 \RequirePackage{fontawesome}
-
-\IfFileExists{./fonts/OpenSans-Regular.ttf}{
-  \setmainfont[
-    BoldFont = OpenSans-Bold, ItalicFont = OpenSans-Italic
-  ]{OpenSans-Regular}
-  \setsansfont[
-    BoldFont = OpenSans-Bold, ItalicFont = OpenSans-Italic
-  ]{OpenSans-Regular}
-}{}
 
 %% styles
 \RequirePackage{xcolor}
@@ -271,6 +273,38 @@
     {\itemizationHeaderStyle Week Commencing}
     & {\itemizationHeaderStyle Description}
     & {\itemizationHeaderStyle Weekly Rate}
+    \\
+
+    \noalign{\smallskip}
+    \hline
+    \noalign{\bigskip}
+    \endhead
+    \noalign{\bigskip}
+    \hline
+    \endfoot
+    \endlastfoot
+}{
+  \noalign{\bigskip}
+  \hline
+  \noalign{\medskip}
+
+  \multicolumn{2}{r}{\itemizationHeaderStyle Balance Due}
+  &
+  \currencysym\formatcurrency{\InvoiceTotal}
+  \\
+  \end{longtable}
+}
+
+\newenvironment{charge}{
+  \header
+  \setlength\LTleft{0pt}
+  \setlength\LTright{0pt}
+  \begin{longtable}{c @{\hspace{1ex}} p{.54\linewidth} r}
+    \hline\noalign{\smallskip}
+
+    {\itemizationHeaderStyle Period Commencing}
+    & {\itemizationHeaderStyle Description}
+    & {\itemizationHeaderStyle Charge}
     \\
 
     \noalign{\smallskip}
